@@ -1,0 +1,67 @@
+<!-- facturar.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cajero.css') }}">
+    <script src="{{ url_for('static', filename='js/cajero.js') }}"></script>
+</head>
+<body>
+    <h1>Gestión de Pedidos</h1>
+    <div class="table-container">
+        <table id="pedidosTable">
+            <thead>
+                <tr>
+                    <th>Pedido ID</th>
+                    <th>Mesa ID</th>
+                    <th>Usuario ID</th>
+                    <th>Fecha/Hora</th>
+                    <th>Producto ID</th>
+                    <th>Cantidad</th>
+                    <th>Estado</th>
+                    <th>Valor Bruto</th>
+                    <th>ValorVenta</th>
+                    <th>Valor Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in lista_pedidos %}
+                <tr>
+                    <td>{{ pedido.pedido_id }}</td>
+                    <td>{{ pedido.mesa_id }}</td>
+                    <td>{{ pedido.usuario_id }}</td>
+                    <td>{{ pedido.fecha_hora }}</td>
+                    <td>{{ pedido.producto_id }}</td>
+                    <td>{{ pedido.cantidad }}</td>
+                    <td>{{ pedido.estado }}</td>
+                    <td>{{ pedido.valor_bruto }}</td>
+                    <td>{{ pedido.ValorVenta }}</td>
+                    <td>{{ pedido.valor_total }}</td>
+                    <td>
+                        <button class="btn btn-danger" data-pedido-id="{{ pedido.pedido_id }}">Cancelar Pedido</button>
+                        <button class="btn btn-success" data-pedido-id="{{ pedido.pedido_id }}">Pagar Pedido</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para el pago -->
+    <div id="modalPago" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Total a Pagar</h2>
+            <p id="valorTotal"></p>
+            <label for="dineroIngresado">Dinero Ingresado:</label>
+            <input type="number" id="dineroIngresado">
+            <p id="cambio"></p>
+            <p id="billetes"></p>
+            <button id="confirmarPago">Confirmar Pago</button>
+        </div>
+    </div>
+</body>
+</html>

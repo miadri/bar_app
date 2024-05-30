@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+.mesas-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.mesas {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mesa {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.mesa.ocupada {
+    background-color: red;
+}
+
+.mesa.libre {
+    background-color: green;
+}

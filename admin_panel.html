@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+<script src="{{ url_for('static', filename='admin.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Panel de Administración</h1>
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" class="active"><i class="fas fa-users"></i> Usuarios</a></li>
+                <li><a href="#"><i class="fas fa-store"></i> Sedes</a></li>
+                <li><a href="#"><i class="fas fa-box"></i> Inventario</a></li>
+                <li><a href="#"><i class="fas fa-file-invoice"></i> Pedidos</a></li>
+                <li><a href="#"><i class="fas fa-utensils"></i> Productos</a></li>
+                <li><a href="#"><i class="fas fa-cash-register"></i> Ventas</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="card">
+                <h2>Usuarios</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Rol</th>
+                            <th>Sede</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se insertarán las filas de usuarios -->
+                    </tbody>
+                </table>
+                <button class="btn btn-primary" id="agregar-usuario">Agregar Usuario</button>
+            </div>
+            <!-- Otras secciones para Sedes, Inventario, Pedidos, Productos y Ventas -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='admin.js') }}"></script>
+</body>
+</html>

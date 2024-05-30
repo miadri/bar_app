@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestión de Mesas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <style>
+      .mesas-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .mesas {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .mesa {
+        width: 150px;
+        height: 100px;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .mesa-libre {
+        background-color: #d9edf7;
+        color: #31708f;
+      }
+
+      .mesa-seleccionada {
+        background-color: #dff0d8;
+        color: #3c763d;
+      }
+
+      .mesa-ocupada {
+        background-color: #f2dede;
+        color: #a94442;
+      }
+
+      #pedido-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      #pedido-form label {
+        margin-right: 10px;
+      }
+
+      #pedido-form select,
+      #pedido-form input[type="number"] {
+        margin-right: 10px;
+      }
+    </style>
+</head>
+<body>
+<h1>Gestión de Mesas</h1>
+<h2>Sede: {{ sede.Nombre }}</h2>
+<div class="mesas-container">
+    <div class="mesas">
+        {% for mesa in mesas %}
+        <div class="mesa {% if mesa.Estado == 'ocupada' %}mesa-ocupada{% elif mesa.Estado == 'seleccionada' %}mesa-seleccionada{% else %}mesa-libre{% endif %}" id="mesa_{{ mesa.MesaID }}" onclick="seleccionarMesa('{{ mesa.MesaID }}')">
+            <p>Mesa {{ mesa.Numero }}</p>
+            <p>Estado: {{ mesa.Estado }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<form id="pedido-form">
+    <label for="producto_id">Productos Disponibles:</label>
+    <select name="producto_id" id="producto_id">
+        {% for producto, cantidad in productos %}
+        <option value="{{ producto.ProductoID }}">{{ producto.Nombre }} ({{ cantidad }} disponibles)</option>
+        {% endfor %}
+    </select>
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" name="cantidad" id="cantidad" min="1" value="1">
+    <button type="button" onclick="agregarProductoPedido(document.getElementById('producto_id').value, document.getElementById('cantidad').value)">Agregar Producto al Pedido</button>
+</form>
+<h2>Pedido Actual</h2>
+<table id="pedido-table">
+    <thead>
+    <tr>
+        <th>Nombre del Producto</th>
+        <th>Cantidad</th>
+        <th>Valor Unitario</th>
+        <th>Valor Total</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody id="pedido-table-body">
+    <!-- Aquí se agregarán dinámicamente las filas de productos del pedido -->
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3" class="total-label">Total:</td>
+        <td colspan="2" id="total-pedido">$ 0.00</td>
+    </tr>
+    </tfoot>
+</table>
+</body>
+</html>

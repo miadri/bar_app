@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-image: url("C:\Users\Soporte\Downloads\tmpa7yq8oyg.jpg"); /* Ruta a la imagen de fondo */
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .box {
+            background-color: rgba(249, 177, 177, 0.7); /* Color de fondo con opacidad */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            margin: 20px;
+            max-width: 1580px; /* Aumento del ancho máximo */
+            width: 90%; /* Porcentaje de la anchura de la caja */
+            transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+        }
+
+        /* Cambio de color cuando el cursor pasa por encima */
+        .box:hover {
+            background-color: rgba(45, 233, 233, 0.7); /* Cambio de color con opacidad */
+        }
+        
+        h1, h2 {
+            color: #000000;
+            margin-bottom: 20px;
+            font-size: 86px; /* Tamaño de letra más grande */
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 18px; /* Tamaño de letra para los párrafos */
+        }
+        
+        .social-media {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-media a {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+            cursor: pointer; /* Cambio de cursor a mano */
+        }
+        
+        .social-media a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Bienvenidos al bar Las Grecas </h1>
+            <p>LO QUE PASA EN EL BAR, SE QUEDA ENTRE AMIGOS.</p>
+            <a href="{{ url_for('routes.login') }}" style="display: inline-block; background-color: #007bff; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s ease; cursor: pointer;">Ir a la página de inicio</a>
+        </div>
+
+        <div class="box">
+            <h2>Encuentranos en nuestras Redes sociales</h2>
+            <div class="social-media">
+                <a href="#">Facebook: Bar Las Grecas</a>
+                <a href="#">Twitter: @LasGrecas</a>
+                <a href="#">Instagram: LasGrecas1</a>
+                <a href="#">WhatsApp: 3254587794</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

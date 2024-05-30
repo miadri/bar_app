@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cajero.css') }}">
+</head>
+<body>
+    <h1>Gestión de Pedidos</h1>
+    <div class="table-container">
+        <table id="pedidosTable">
+            <thead>
+                <tr>
+                    <th>Pedido ID</th>
+                    <th>Mesa ID</th>
+                    <th>Usuario ID</th>
+                    <th>Fecha/Hora</th>
+                    <th>Producto ID</th>
+                    <th>Cantidad</th>
+                    <th>Estado</th>
+                    <th>Valor Bruto</th>
+                    <th>Valor Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se insertan los pedidos desde JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/cajero.js') }}"></script>
+</body>
+</html>
